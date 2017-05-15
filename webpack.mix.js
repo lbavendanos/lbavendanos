@@ -13,8 +13,8 @@ mix.setPublicPath('dist/');
  |
  */
 
-mix.js('src/app.js', 'dist/')
-   .sass('src/app.scss', 'dist/');
+mix.js('src/js/app.js', 'dist/')
+   .sass('src/sass/app.scss', 'dist/');
 
 // Full API
 // mix.js(src, output);
