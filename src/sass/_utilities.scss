@@ -1,0 +1,10 @@
+// Mixins
+@mixin padding-section($value) {
+  padding: $value 0;
+}
+
+@mixin title-section($color){
+    text-align: center;
+    color: $color;
+    margin-bottom: 30px;
+}

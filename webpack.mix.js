@@ -13,8 +13,11 @@ mix.setPublicPath('dist/');
  |
  */
 
-mix.js('src/js/app.js', 'dist/')
-   .sass('src/sass/app.scss', 'dist/');
+mix.js('src/js/app.js', 'dist/js/')
+   .sass('src/sass/app.scss', 'dist/css/')
+   .copy('src/favicon.ico', 'dist/favicon.ico')
+   .copy('src/images/profile-image.jpg', 'dist/images/profile-image.jpg')
+   .copy('src/index.html', 'dist/index.html');
 
 // Full API
 // mix.js(src, output);

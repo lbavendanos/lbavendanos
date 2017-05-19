@@ -1,1 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import 'variables';
+@import 'utilities';
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    background-color: $main_color;
+    .header-profile{
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__avatar{
+            width: 30%;
+            img{
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        &__info{
+            margin: 30px auto;
+            color: $default_color;
+            text-align: center;
+            h1{
+                font-size: 3em;
+            }
+            h3{
+                font-size: 1.3em;
+            }
+        }
+    }
+}
+
+.main{
+    padding: 50px 0;
+    background-color: $default_color;
+    .about-me{
+        @include padding-section(30px);
+        & h3{
+            @include title-section($main_color);
+        }
+
+        & p{
+            text-align: justify;
+        }
+    }
+    .education{
+        @include padding-section(30px);
+        & h3{
+            @include title-section($main_color);
+        }
+        &-level{
+            list-style: none;
+            padding: 0;
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 5px;
+                background-color: lighten($main_color, 20%);
+                left: 30%;
+            }
+            & li{
+                position: relative;
+            }
+            & li::before{
+                content: '';
+                width: 15px;
+                height: 15px;
+                position: absolute;
+                background-color: $main_color;
+                border-radius: 50%;
+                box-shadow: 0 0 0 5px lighten($main_color, 20%);
+                left: 35%;
+                top: 0;
+                margin: 0 0 0 -32px;
+            }
+            &-date{
+                position: absolute;
+                color: lighten($main_color, 10%)
+            }
+            &-info{
+                margin: -3px 0 34px 35%;
+                padding: 0 0 0 .8em;
+                line-height: 1.4;
+                & h5{
+                    color: lighten($main_color, 10%)
+                }
+                & p{
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
+
+.footer{
+    margin-top: auto;
+    background-color: $main_color;
+}
