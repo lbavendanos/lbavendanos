@@ -1,6 +1,16 @@
 let mix = require('laravel-mix');
 
 mix.setPublicPath('dist/');
+mix.browserSync({
+    proxy: false,
+    server: {        
+        baseDir: "./dist",
+        index: "index.html"
+    },
+    files: [
+        'dist/**/*.*'
+    ]
+})
 
 /*
  |--------------------------------------------------------------------------
@@ -15,6 +25,7 @@ mix.setPublicPath('dist/');
 
 mix.js('src/js/app.js', 'dist/js/')
    .sass('src/sass/app.scss', 'dist/css/')
+   .copy('node_modules/font-awesome/fonts', 'dist/fonts')
    .copy('src/favicon.ico', 'dist/favicon.ico')
    .copy('src/images', 'dist/images', false)
    .copy('src/index.html', 'dist/index.html');
