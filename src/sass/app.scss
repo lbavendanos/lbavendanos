@@ -11,6 +11,11 @@ body{
     min-height: 100vh;
     overflow-x: hidden;
     background-color: $first_color;
+    
+}
+
+.row{
+    margin: 0;
 }
 
 .header{
@@ -22,7 +27,16 @@ body{
         justify-content: center;
         align-items: center;
         &__avatar{
-            width: 30%;
+            width: 45%;
+            @include media-breakpoint-up(sm) {
+                width: 40%;
+            }
+            @include media-breakpoint-up(md) {
+                width: 35%;
+            }
+            @include media-breakpoint-up(lg) {
+                width: 25%;
+            }
             img{
                 width: 100%;
                 border-radius: 50%;
@@ -33,10 +47,28 @@ body{
             color: $default_color;
             text-align: center;
             h1{
-                font-size: 3em;
+                font-size: 1.5em;
+                @include media-breakpoint-up(sm) {
+                    font-size: 2em;
+                }
+                @include media-breakpoint-up(md) {
+                    font-size: 2.5em;
+                }
+                @include media-breakpoint-up(lg) {
+                    font-size: 2.7em;
+                }
             }
             h3{
-                font-size: 1.3em;
+                font-size: .9em;
+                @include media-breakpoint-up(sm) {
+                    font-size: 1em;
+                }
+                @include media-breakpoint-up(md) {
+                    font-size: 1.1em;
+                }
+                @include media-breakpoint-up(lg) {
+                    font-size: 1.3em;
+                }
             }
         }
     }
@@ -54,10 +86,11 @@ body{
         @include padding-section(30px);
         h3{
             @include title-section($main_color);
+            
         }
 
         p{
-            text-align: center;
+            @include paragraph-section(center);
         }
     }
     @each $section in $section{
@@ -70,43 +103,61 @@ body{
                 list-style: none;
                 padding: 0;
                 position: relative;
-                &::before{
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    width: 5px;
-                    background-color: lighten($main_color, 20%);
-                    left: 32%;
+                @include media-breakpoint-up(md){
+                    @include level-before(29%);
+                }
+                @include media-breakpoint-up(lg){
+                    &::before{
+                        content: none;
+                    }
+                }
+                @include media-breakpoint-up(xl){
+                    @include level-before(32%);
                 }
                 li{
                     position: relative;
-                }
-                li::before{
-                    content: '';
-                    width: 15px;
-                    height: 15px;
-                    position: absolute;
-                    background-color: $main_color;
-                    border-radius: 50%;
-                    box-shadow: 0 0 0 5px lighten($main_color, 20%);
-                    left: 37%;
-                    top: 0;
-                    margin: 0 0 0 -30px;
+                    @include media-breakpoint-up(md){
+                        @include list-before(33%, -30px);
+                    }
+                    @include media-breakpoint-up(lg){
+                        &::before{
+                            content: none;
+                        }
+                    }
+                    @include media-breakpoint-up(xl){
+                        @include list-before(37%, -28px);
+                    }
                 }
                 &-date{
-                    position: absolute;
-                    color: lighten($main_color, 10%)
+                    @include date(relative, .5em);
+                    color: lighten($main_color, 10%);
+                    @include media-breakpoint-up(md){
+                        @include date(absolute, 0);
+                    }
+                    @include media-breakpoint-up(lg){
+                        @include date(relative, .5em);
+                    }
+                    @include media-breakpoint-up(xl){
+                        @include date(absolute, 0);
+                    }
                 }
                 &-info{
-                    margin: -3px 0 34px 35%;
-                    padding: 0 0 0 .8em;
+                    @include info(0 0 40px 0, 0);
                     line-height: 1.4;
+                    @include media-breakpoint-up(md){
+                        @include info(-3px 0 35px 35%, 0 0 0 .8em);
+                    }
+                    @include media-breakpoint-up(lg){
+                        @include info(0 0 30px 0, 0);
+                    }
+                    @include media-breakpoint-up(xl){
+                        @include info(-3px 0 35px 35%, 0 0 0 .8em);
+                    }
                     h5{
                         color: lighten($main_color, 10%)
                     }
                     p{
-                        text-align: left;
+                        @include paragraph-section(justify, left);
                     }
                 }
             }
@@ -119,12 +170,15 @@ body{
         }
 
         p{
-            text-align: center;
+            @include paragraph-section(center);
         }
 
         &-wrapper{
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(3, 1fr);
+            }
             grid-gap: .5em;
             .chart{
                 margin: 0;
@@ -169,7 +223,7 @@ body{
             @include title-section($main_color);
         }
         p{
-            text-align: center;
+            @include paragraph-section(center);
         }
         &-social{
             padding: 0;
@@ -178,40 +232,13 @@ body{
             text-align: center;
             &__item{
                 display: inline-block;
-                padding: .5em;
-                font-size: 1.2em;
-                a{
-                    text-decoration: none;
-                    &:hover{
-                        text-decoration: none;
-                        outline: 0;
-                    }
-                    .fa{
-                        width: 50px;
-                        height: 50px;
-                        line-height: 50px;
-                        text-align: center;
-                        color: $default_color;
-                        transition: all 0.3s ease-in-out;
-                        border-radius: 50%;
-                        &-facebook{
-                            background-color: $bg_facebook;
-                        }
-                        &-linkedin{
-                            background-color: $bg_linkedin;
-                        }
-                        &-github{
-                            background-color: $bg_github;
-                        }
-                        &-envelope{
-                            background-color: $bg_envelope;
-                        }
-                        &:hover,
-                        &:active{
-                            transform: scale(1.1);
-                        }
-                    }
+                padding: .4em;
+                font-size: 1em;
+                @include media-breakpoint-up(sm){
+                    padding: .5em;
+                    font-size: 1.2em;
                 }
+                @include social(50px);
             }
         }
     }
@@ -243,38 +270,7 @@ body{
                 display: inline-block;
                 padding: .1em;
                 font-size: .7em;
-                a{
-                    text-decoration: none;
-                    &:hover{
-                        text-decoration: none;
-                        outline: 0;
-                    }
-                    .fa{
-                        width: 20px;
-                        height: 20px;
-                        line-height: 20px;
-                        text-align: center;
-                        color: $default_color;
-                        transition: all 0.3s ease-in-out;
-                        border-radius: 50%;
-                        &-facebook{
-                            background-color: $bg_facebook;
-                        }
-                        &-linkedin{
-                            background-color: $bg_linkedin;
-                        }
-                        &-github{
-                            background-color: $bg_github;
-                        }
-                        &-envelope{
-                            background-color: $bg_envelope;
-                        }
-                        &:hover,
-                        &:active{
-                            transform: scale(1.1);
-                        }
-                    }
-                }
+                @include social(20px);
             }
         }
     }

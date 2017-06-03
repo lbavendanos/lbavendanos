@@ -7,4 +7,96 @@
     text-align: center;
     color: $color;
     margin-bottom: 30px;
+    font-size: 1.5em;
+    @include media-breakpoint-up(sm){
+        font-size: 1.75em;
+    }
+}
+
+@mixin paragraph-section($arg1, $arg2: null){
+  text-align: $arg1;
+  font-size: .9em;
+  @include media-breakpoint-up(sm){
+      font-size: 1em;
+  }
+  @if $arg2{
+    @include media-breakpoint-up(md){
+        text-align: $arg2;
+    }
+    @include media-breakpoint-up(lg){
+        text-align: $arg1;
+    }
+  }
+}
+
+@mixin level-before($value){
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: lighten($main_color, 20%);
+    left: $value;
+  }
+}
+
+@mixin list-before($arg1, $arg2){
+  &::before{
+    content: '';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background-color: $main_color;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px lighten($main_color, 20%);
+    left: $arg1;
+    top: 0;
+    margin: 0 0 0 $arg2;
+  }
+}
+
+@mixin date($arg1, $arg2){
+  position: $arg1;
+  padding-bottom: $arg2;
+}
+
+@mixin info($arg1, $arg2){
+  margin: $arg1;
+  padding: $arg2;
+}
+
+@mixin social($arg1){
+  a{
+      text-decoration: none;
+      &:hover{
+          text-decoration: none;
+          outline: 0;
+      }
+      .fa{
+          width: $arg1;
+          height: $arg1;
+          line-height: $arg1;
+          text-align: center;
+          color: $default_color;
+          transition: all 0.3s ease-in-out;
+          border-radius: 50%;
+          &-facebook{
+              background-color: $bg_facebook;
+          }
+          &-linkedin{
+              background-color: $bg_linkedin;
+          }
+          &-github{
+              background-color: $bg_github;
+          }
+          &-envelope{
+              background-color: $bg_envelope;
+          }
+          &:hover,
+          &:active{
+              transform: scale(1.1);
+          }
+      }
+  }
 }
