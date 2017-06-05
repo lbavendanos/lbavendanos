@@ -1,6 +1,9 @@
 // Mixins
 @mixin padding-section($value) {
   padding: $value 0;
+  @include print(){
+      padding: 10px;
+  }
 }
 
 @mixin title-section($color){
@@ -10,6 +13,10 @@
     font-size: 1.5em;
     @include media-breakpoint-up(sm){
         font-size: 1.75em;
+    }
+    @include print(){
+        margin-bottom: 15px;
+        font-size: 1em;
     }
 }
 
@@ -26,6 +33,9 @@
     @include media-breakpoint-up(lg){
         text-align: $arg1;
     }
+  }
+  @include print(){
+      font-size: .7em;
   }
 }
 
@@ -59,6 +69,10 @@
 @mixin date($arg1, $arg2){
   position: $arg1;
   padding-bottom: $arg2;
+  @include print(){
+      font-size: .7em;
+      margin: 0;
+  }
 }
 
 @mixin info($arg1, $arg2){
@@ -81,6 +95,11 @@
           color: $default_color;
           transition: all 0.3s ease-in-out;
           border-radius: 50%;
+          @include print(){
+            width:  $arg1 - 10px;
+            height:  $arg1 - 10px;
+            line-height:  $arg1 - 10px;
+          }
           &-facebook{
               background-color: $bg_facebook;
           }

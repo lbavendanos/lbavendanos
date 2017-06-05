@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import 'node_modules/font-awesome/scss/font-awesome.scss';
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import 'print';
 @import 'variables';
 @import 'utilities';
 
@@ -11,7 +12,9 @@ body{
     min-height: 100vh;
     overflow-x: hidden;
     background-color: $first_color;
-    
+    @include print(){
+        -webkit-print-color-adjust: exact;
+    }
 }
 
 .row{
@@ -26,6 +29,9 @@ body{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @include print(){
+            height: 200px;
+        }
         &__avatar{
             width: 45%;
             @include media-breakpoint-up(sm) {
@@ -37,6 +43,9 @@ body{
             @include media-breakpoint-up(lg) {
                 width: 25%;
             }
+            @include print(){
+                width: 20%;
+            }
             img{
                 width: 100%;
                 border-radius: 50%;
@@ -46,6 +55,9 @@ body{
             margin: 30px auto;
             color: $default_color;
             text-align: center;
+            @include print(){
+                margin: 5px auto;
+            }
             h1{
                 font-size: 1.5em;
                 @include media-breakpoint-up(sm) {
@@ -56,6 +68,10 @@ body{
                 }
                 @include media-breakpoint-up(lg) {
                     font-size: 2.7em;
+                }
+                @include print(){
+                    font-size: 1em;
+                    margin: 0;
                 }
             }
             h3{
@@ -69,17 +85,25 @@ body{
                 @include media-breakpoint-up(lg) {
                     font-size: 1.3em;
                 }
+                @include print(){
+                    font-size: .8em;
+                    margin: 0;
+                }
             }
         }
     }
 }
 
-.main{    
+.main{
     .container{
         padding: 50px 0;
         .wrapper{
             padding-left: 3em;
             padding-right: 3em;
+            @include print(){
+                padding-left: 1em;
+                padding-right: 1em;
+            }
         }
     }
     .about-me{
@@ -114,6 +138,11 @@ body{
                 @include media-breakpoint-up(xl){
                     @include level-before(32%);
                 }
+                @include print(){
+                    &::before{
+                        content: none;
+                    }
+                }
                 li{
                     position: relative;
                     @include media-breakpoint-up(md){
@@ -126,6 +155,11 @@ body{
                     }
                     @include media-breakpoint-up(xl){
                         @include list-before(37%, -28px);
+                    }
+                    @include print(){
+                        &::before{
+                            content: none;
+                        }
                     }
                 }
                 &-date{
@@ -153,8 +187,15 @@ body{
                     @include media-breakpoint-up(xl){
                         @include info(-3px 0 35px 35%, 0 0 0 .8em);
                     }
+                    @include print(){
+                        @include info(0 0 10px 0, 0);
+                    }
                     h5{
-                        color: lighten($main_color, 10%)
+                        color: lighten($main_color, 10%);
+                        @include print(){
+                            font-size: .8em;
+                            margin: 0;
+                        }
                     }
                     p{
                         @include paragraph-section(justify, left);
@@ -177,6 +218,9 @@ body{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            @include print(){
                 grid-template-columns: repeat(3, 1fr);
             }
             grid-gap: .5em;
@@ -258,9 +302,15 @@ body{
         color: $default_color;
         text-align: left;
         text-transform: uppercase;
+        @include print(){
+            font-size: .1em;
+        }
     }
     &__contact{
         margin: .3em 0;
+        @include print(){
+            margin: 0;
+        }
         &-social{
             padding: 0;
             margin: 0;
@@ -270,6 +320,9 @@ body{
                 display: inline-block;
                 padding: .1em;
                 font-size: .7em;
+                @include print(){
+                    font-size: .2em;
+                }
                 @include social(20px);
             }
         }
