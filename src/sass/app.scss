@@ -139,9 +139,7 @@ body{
                     @include level-before(32%);
                 }
                 @include print(){
-                    &::before{
-                        content: none;
-                    }
+                    @include level-before(37%);
                 }
                 li{
                     position: relative;
@@ -157,9 +155,7 @@ body{
                         @include list-before(37%, -28px);
                     }
                     @include print(){
-                        &::before{
-                            content: none;
-                        }
+                        @include list-before(45%, -28px);
                     }
                 }
                 &-date{
@@ -172,6 +168,9 @@ body{
                         @include date(relative, .5em);
                     }
                     @include media-breakpoint-up(xl){
+                        @include date(absolute, 0);
+                    }
+                    @include print(){
                         @include date(absolute, 0);
                     }
                 }
@@ -188,10 +187,14 @@ body{
                         @include info(-3px 0 35px 35%, 0 0 0 .8em);
                     }
                     @include print(){
-                        @include info(0 0 10px 0, 0);
+                        @include info(-3px 0 25px 38%, 0 0 0 .8em);
                     }
                     h5{
                         color: lighten($main_color, 10%);
+                        a{
+                            color: lighten($main_color, 10%);
+                            text-decoration: none;
+                        }
                         @include print(){
                             font-size: .8em;
                             margin: 0;
