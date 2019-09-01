@@ -1,65 +1,65 @@
 // Mixins
 @mixin padding-section($value) {
   padding: $value 0;
-  @include print(){
-      padding: 10px;
+  @include print() {
+    padding: 10px;
   }
 }
 
-@mixin title-section($color){
-    text-align: center;
-    color: $color;
-    margin-bottom: 30px;
-    font-size: 1.5em;
-    @include media-breakpoint-up(sm){
-        font-size: 1.75em;
-    }
-    @include print(){
-        margin-bottom: 15px;
-        font-size: 1em;
-    }
+@mixin title-section($color) {
+  text-align: center;
+  color: $color;
+  margin-bottom: 30px;
+  font-size: 1.5em;
+  @include media-breakpoint-up(sm) {
+    font-size: 1.75em;
+  }
+  @include print() {
+    margin-bottom: 15px;
+    font-size: 1em;
+  }
 }
 
-@mixin paragraph-section($arg1, $arg2: null){
-    color: lighten($second_color, 35%);
-    text-align: $arg1;
-    font-size: .9em;
-    a{
-        color: $second_color;
-        font-weight: 500;
-        text-decoration: none;
-        @include print(){
-            font-weight: 500;
-            color: $second_color;
-        }
-        &::hover,
-        &::active{
-            text-decoration: none;
-        }
+@mixin paragraph-section($arg1, $arg2: null) {
+  color: lighten($second_color, 35%);
+  text-align: $arg1;
+  font-size: 0.9em;
+  a {
+    color: $second_color;
+    font-weight: 500;
+    text-decoration: none;
+    @include print() {
+      font-weight: 500;
+      color: $second_color;
     }
-    @include media-breakpoint-up(sm){
-        font-size: 1em;
+    &::hover,
+    &::active {
+      text-decoration: none;
     }
-    @if $arg2{
-        @include media-breakpoint-up(md){
-            text-align: $arg2;
-        }
-        @include media-breakpoint-up(lg){
-            text-align: $arg1;
-        }
-        @include media-breakpoint-up(xl){
-            text-align: $arg2;
-        }
+  }
+  @include media-breakpoint-up(sm) {
+    font-size: 1em;
+  }
+  @if $arg2 {
+    @include media-breakpoint-up(md) {
+      text-align: $arg2;
     }
-    @include print(){
-        color: lighten($second_color, 25%);
-        font-size: .7em;
-        text-align: $arg2;
+    @include media-breakpoint-up(lg) {
+      text-align: $arg1;
     }
+    @include media-breakpoint-up(xl) {
+      text-align: $arg2;
+    }
+  }
+  @include print() {
+    color: lighten($second_color, 25%);
+    font-size: 0.7em;
+    text-align: $arg2;
+  }
 }
 
-@mixin level-before($value){
-  &::before{
+@mixin level-before($value) {
+  &::before {
     content: '';
     position: absolute;
     top: 0;
@@ -70,8 +70,8 @@
   }
 }
 
-@mixin list-before($arg1, $arg2){
-  &::before{
+@mixin list-before($arg1, $arg2) {
+  &::before {
     content: '';
     width: 15px;
     height: 15px;
@@ -85,56 +85,56 @@
   }
 }
 
-@mixin date($arg1, $arg2){
+@mixin date($arg1, $arg2) {
   position: $arg1;
   padding-bottom: $arg2;
-  @include print(){
-      font-size: .7em;
-      margin: 0;
+  @include print() {
+    font-size: 0.7em;
+    margin: 0;
   }
 }
 
-@mixin info($arg1, $arg2){
+@mixin info($arg1, $arg2) {
   margin: $arg1;
   padding: $arg2;
 }
 
-@mixin social($arg1){
-  a{
+@mixin social($arg1) {
+  a {
+    text-decoration: none;
+    &:hover {
       text-decoration: none;
-      &:hover{
-          text-decoration: none;
-          outline: 0;
+      outline: 0;
+    }
+    .fa {
+      width: $arg1;
+      height: $arg1;
+      line-height: $arg1;
+      text-align: center;
+      color: $default_color;
+      transition: all 0.3s ease-in-out;
+      border-radius: 50%;
+      @include print() {
+        width: $arg1 - 10px;
+        height: $arg1 - 10px;
+        line-height: $arg1 - 10px;
       }
-      .fa{
-          width: $arg1;
-          height: $arg1;
-          line-height: $arg1;
-          text-align: center;
-          color: $default_color;
-          transition: all 0.3s ease-in-out;
-          border-radius: 50%;
-          @include print(){
-            width:  $arg1 - 10px;
-            height:  $arg1 - 10px;
-            line-height:  $arg1 - 10px;
-          }
-          &-facebook{
-              background-color: $bg_facebook;
-          }
-          &-linkedin{
-              background-color: $bg_linkedin;
-          }
-          &-github{
-              background-color: $bg_github;
-          }
-          &-envelope{
-              background-color: $bg_envelope;
-          }
-          &:hover,
-          &:active{
-              transform: scale(1.1);
-          }
+      &-facebook {
+        background-color: $bg_facebook;
       }
+      &-linkedin {
+        background-color: $bg_linkedin;
+      }
+      &-github {
+        background-color: $bg_github;
+      }
+      &-envelope {
+        background-color: $bg_envelope;
+      }
+      &:hover,
+      &:active {
+        transform: scale(1.1);
+      }
+    }
   }
 }
