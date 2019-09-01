@@ -5,329 +5,343 @@
 @import 'variables';
 @import 'utilities';
 
-body{
-    font-family: 'Open Sans', sans-serif;
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: $first_color;
+  @include print() {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+.row {
+  margin: 0;
+}
+
+.header {
+  background-color: $main_color;
+  .header-profile {
+    height: 500px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
-    background-color: $first_color;
-    @include print(){
-        -webkit-print-color-adjust: exact;
+    justify-content: center;
+    align-items: center;
+    @include print() {
+      height: 300px;
     }
+    &__avatar {
+      width: 45%;
+      @include media-breakpoint-up(sm) {
+        width: 40%;
+      }
+      @include media-breakpoint-up(md) {
+        width: 35%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 25%;
+      }
+      @include print() {
+        width: 20%;
+      }
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    &__info {
+      margin: 30px auto;
+      color: $default_color;
+      text-align: center;
+      @include print() {
+        margin: 5px auto;
+      }
+      h1 {
+        font-size: 1.5em;
+        @include media-breakpoint-up(sm) {
+          font-size: 2em;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 2.5em;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 2.7em;
+        }
+        @include print() {
+          font-size: 1em;
+          margin: 0;
+        }
+      }
+      h3 {
+        font-size: 0.9em;
+        @include media-breakpoint-up(sm) {
+          font-size: 1em;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 1.1em;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 1.3em;
+        }
+        @include print() {
+          font-size: 0.8em;
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 
-.row{
-    margin: 0;
-}
-
-.header{
-    background-color: $main_color;
-    .header-profile{
-        height: 500px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        @include print(){
-            height: 200px;
-        }
-        &__avatar{
-            width: 45%;
-            @include media-breakpoint-up(sm) {
-                width: 40%;
-            }
-            @include media-breakpoint-up(md) {
-                width: 35%;
-            }
-            @include media-breakpoint-up(lg) {
-                width: 25%;
-            }
-            @include print(){
-                width: 20%;
-            }
-            img{
-                width: 100%;
-                border-radius: 50%;
-            }
-        }
-        &__info{
-            margin: 30px auto;
-            color: $default_color;
-            text-align: center;
-            @include print(){
-                margin: 5px auto;
-            }
-            h1{
-                font-size: 1.5em;
-                @include media-breakpoint-up(sm) {
-                    font-size: 2em;
-                }
-                @include media-breakpoint-up(md) {
-                    font-size: 2.5em;
-                }
-                @include media-breakpoint-up(lg) {
-                    font-size: 2.7em;
-                }
-                @include print(){
-                    font-size: 1em;
-                    margin: 0;
-                }
-            }
-            h3{
-                font-size: .9em;
-                @include media-breakpoint-up(sm) {
-                    font-size: 1em;
-                }
-                @include media-breakpoint-up(md) {
-                    font-size: 1.1em;
-                }
-                @include media-breakpoint-up(lg) {
-                    font-size: 1.3em;
-                }
-                @include print(){
-                    font-size: .8em;
-                    margin: 0;
-                }
-            }
-        }
+.main {
+  @include print() {
+    min-height: calc(100vh - 40px);
+  }
+  .container {
+    padding: 50px 0;
+    .wrapper {
+      padding-left: 3em;
+      padding-right: 3em;
+      @include print() {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
     }
-}
-
-.main{
-    .container{
-        padding: 50px 0;
-        .wrapper{
-            padding-left: 3em;
-            padding-right: 3em;
-            @include print(){
-                padding-left: 1em;
-                padding-right: 1em;
-            }
-        }
+  }
+  .about-me {
+    @include padding-section(30px);
+    h3 {
+      @include title-section($main_color);
     }
-    .about-me{
-        @include padding-section(30px);
-        h3{
-            @include title-section($main_color);
-            
-        }
 
-        p{
-            @include paragraph-section(center);
-        }
+    p {
+      @include paragraph-section(center);
     }
-    @each $section in $section{
-        .#{$section}{
-            @include padding-section(30px);
-            h3{
-                @include title-section($main_color);
-            }
-            &-level{
-                list-style: none;
-                padding: 0;
-                position: relative;
-                @include media-breakpoint-up(md){
-                    @include level-before(29%);
-                }
-                @include media-breakpoint-up(lg){
-                    &::before{
-                        content: none;
-                    }
-                }
-                @include media-breakpoint-up(xl){
-                    @include level-before(32%);
-                }
-                @include print(){
-                    @include level-before(37%);
-                }
-                li{
-                    position: relative;
-                    @include media-breakpoint-up(md){
-                        @include list-before(33%, -30px);
-                    }
-                    @include media-breakpoint-up(lg){
-                        &::before{
-                            content: none;
-                        }
-                    }
-                    @include media-breakpoint-up(xl){
-                        @include list-before(37%, -28px);
-                    }
-                    @include print(){
-                        @include list-before(45%, -28px);
-                    }
-                }
-                &-date{
-                    @include date(relative, .5em);
-                    color: lighten($main_color, 10%);
-                    @include media-breakpoint-up(md){
-                        @include date(absolute, 0);
-                    }
-                    @include media-breakpoint-up(lg){
-                        @include date(relative, .5em);
-                    }
-                    @include media-breakpoint-up(xl){
-                        @include date(absolute, 0);
-                    }
-                    @include print(){
-                        @include date(absolute, 0);
-                    }
-                }
-                &-info{
-                    @include info(0 0 40px 0, 0);
-                    line-height: 1.4;
-                    @include media-breakpoint-up(md){
-                        @include info(-3px 0 35px 35%, 0 0 0 .8em);
-                    }
-                    @include media-breakpoint-up(lg){
-                        @include info(0 0 30px 0, 0);
-                    }
-                    @include media-breakpoint-up(xl){
-                        @include info(-3px 0 35px 35%, 0 0 0 .8em);
-                    }
-                    @include print(){
-                        @include info(-3px 0 25px 38%, 0 0 0 .8em);
-                    }
-                    h5{
-                        color: lighten($main_color, 10%);
-                        a{
-                            color: lighten($main_color, 10%);
-                            text-decoration: none;
-                        }
-                        @include print(){
-                            font-size: .8em;
-                            margin: 0;
-                        }
-                    }
-                    p{
-                        @include paragraph-section(justify, left);
-                    }
-                }
-            }
+  }
+  @each $section in $section {
+    .#{$section} {
+      @include padding-section(30px);
+      h3 {
+        @include title-section($main_color);
+      }
+      &-level {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        @include media-breakpoint-up(md) {
+          @include level-before(29%);
         }
+        @include media-breakpoint-up(lg) {
+          &::before {
+            content: none;
+          }
+        }
+        @include media-breakpoint-up(xl) {
+          @include level-before(32%);
+        }
+        @include print() {
+          @include level-before(37.5%);
+        }
+        li {
+          position: relative;
+          @include media-breakpoint-up(md) {
+            @include list-before(33%, -30px);
+          }
+          @include media-breakpoint-up(lg) {
+            &::before {
+              content: none;
+            }
+          }
+          @include media-breakpoint-up(xl) {
+            @include list-before(37%, -28px);
+          }
+          @include print() {
+            @include list-before(45%, -28px);
+          }
+        }
+        &-date {
+          @include date(relative, 0.5em);
+          color: lighten($main_color, 10%);
+          @include media-breakpoint-up(md) {
+            @include date(absolute, 0);
+          }
+          @include media-breakpoint-up(lg) {
+            @include date(relative, 0.5em);
+          }
+          @include media-breakpoint-up(xl) {
+            @include date(absolute, 0);
+          }
+          @include print() {
+            @include date(absolute, 0);
+          }
+        }
+        &-info {
+          @include info(0 0 40px 0, 0);
+          line-height: 1.4;
+          @include media-breakpoint-up(md) {
+            @include info(-3px 0 35px 35%, 0 0 0 0.8em);
+          }
+          @include media-breakpoint-up(lg) {
+            @include info(0 0 30px 0, 0);
+          }
+          @include media-breakpoint-up(xl) {
+            @include info(-3px 0 35px 35%, 0 0 0 0.8em);
+          }
+          @include print() {
+            @include info(-3px 0 25px 38%, 0 0 0 0.8em);
+          }
+          h5 {
+            color: lighten($main_color, 10%);
+            a {
+              color: lighten($main_color, 10%);
+              text-decoration: none;
+            }
+            @include print() {
+              font-size: 0.8em;
+              margin: 0;
+            }
+          }
+          p {
+            @include paragraph-section(justify, left);
+          }
+        }
+      }
     }
-    .knowledge{
-        @include padding-section(30px);
-        h3{
-            @include title-section($main_color);
-        }
+  }
+  .knowledge {
+    @include padding-section(30px);
+    h3 {
+      @include title-section($main_color);
+    }
 
-        p{
-            @include paragraph-section(center);
-        }
-
-        &-wrapper{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            @include media-breakpoint-up(sm) {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            @include print(){
-                grid-template-columns: repeat(3, 1fr);
-            }
-            grid-gap: .5em;
-            .chart{
-                margin: 0;
-                padding: 0;
-                &-donut{
-                    width: 100%;
-                    height: 100%;
-                    &__hole{
-                        fill: $first_color;
-                    }
-                    &__ring{
-                        fill: transparent;
-                        stroke: lighten($main_color, 20%);
-                        stroke-width: 3;
-                    }
-                    &__segment{
-                        fill: transparent;
-                        stroke: $main_color;
-                        stroke-width: 3;
-                    }
-                }
-
-                &-info{
-                    fill: $second_color;
-                    transform: translateY(0.25em);
-                    &__img{
-                        transform: translateX(-.46em) translateY(-0.9em);
-                    }
-                    &__label{
-                        font-size: 0.17em;
-                        text-transform: uppercase;
-                        text-anchor: middle;
-                        transform: translateY(0.7em);
-                    }
-                }
-            }
-        }
+    p {
+      @include paragraph-section(center);
     }
-    .contact{
-        @include padding-section(30px);
-        h3{
-            @include title-section($main_color);
-        }
-        p{
-            @include paragraph-section(center);
-        }
-        &-social{
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            text-align: center;
-            &__item{
-                display: inline-block;
-                padding: .4em;
-                font-size: 1em;
-                @include media-breakpoint-up(sm){
-                    padding: .5em;
-                    font-size: 1.2em;
-                }
-                @include social(50px);
-            }
-        }
-    }
-}
 
-.footer{
-    margin-top: auto;
-    background-color: $main_color;
-    .wrapper{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    &__title{
-        font-size: .7em;
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      @include media-breakpoint-up(sm) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include print() {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      grid-gap: 0.5em;
+      .chart {
+        position: relative;
         margin: 0;
-        color: $default_color;
-        text-align: left;
-        text-transform: uppercase;
-        @include print(){
-            font-size: .1em;
+        padding: 0;
+        &-donut {
+          width: 100%;
+          height: 100%;
+          &__hole {
+            fill: $first_color;
+          }
+          &__ring {
+            fill: transparent;
+            stroke: lighten($main_color, 20%);
+            stroke-width: 3;
+          }
+          &__segment {
+            fill: transparent;
+            stroke: $main_color;
+            stroke-width: 3;
+          }
         }
-    }
-    &__contact{
-        margin: .5em 0;
-        @include print(){
-            margin: .3em 0;
-        }
-        &-social{
-            display: flex;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            text-align: right;
-            &__item{
-                padding: .1em;
-                font-size: .7em;
-                @include print(){
-                    font-size: .2em;
-                }
-                @include social(20px);
+
+        &-info {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          &__img {
+            width: 3rem;
+            @include print() {
+              width: 1.5rem;
             }
+          }
+          &__label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            @include print() {
+              font-size: 0.6rem;
+            }
+          }
         }
+      }
     }
+  }
+  .contact {
+    @include padding-section(30px);
+    h3 {
+      @include title-section($main_color);
+    }
+    p {
+      @include paragraph-section(center);
+    }
+    &-social {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: center;
+      &__item {
+        display: inline-block;
+        padding: 0.4em;
+        font-size: 1em;
+        @include media-breakpoint-up(sm) {
+          padding: 0.5em;
+          font-size: 1.2em;
+        }
+        @include social(50px);
+      }
+    }
+  }
+}
+
+.footer {
+  margin-top: auto;
+  background-color: $main_color;
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    font-size: 0.7em;
+    margin: 0;
+    color: $default_color;
+    text-align: left;
+    text-transform: uppercase;
+    @include print() {
+      font-size: 0.1em;
+    }
+  }
+  &__contact {
+    margin: 0.5em 0;
+    @include print() {
+      margin: 0.3em 0;
+    }
+    &-social {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: right;
+      &__item {
+        padding: 0.1em;
+        font-size: 0.7em;
+        @include print() {
+          font-size: 0.2em;
+        }
+        @include social(20px);
+      }
+    }
+  }
 }

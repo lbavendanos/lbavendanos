@@ -1,31 +1,32 @@
 @media print {
-    @for $i from 1 through 12 {
-        .col-print-#{$i} {
-            flex: 0 0 #{percentage(round($i*8.33)/100)};
-            max-width: #{percentage(round($i*8.33)/100)};
-        }
+  @for $i from 1 through 12 {
+    .col-print-#{$i} {
+      flex: 0 0 #{percentage(round($i * 8.33) / 100)};
+      max-width: #{percentage(round($i * 8.33) / 100)};
     }
+  }
 }
 
 @page {
-    size: A4;
-    margin: 0;
+  size: A4;
+  margin: 0;
 }
 @media print {
-    html, body {
-        width: 210mm;
-        height: 297mm;        
-    }
-    .container{
-        width: 85%;
-    }
+  html,
+  body {
+    background: #fff !important;
+    width: 210mm;
+    height: 297mm;
+  }
+  .container {
+    width: 85%;
+  }
 
-    ::first-letter{
-        margin: 0;
-        padding: 0;
-    }
+  ::first-letter {
+    margin: 0;
+    padding: 0;
+  }
 }
-
 
 @mixin print {
   @media print {
