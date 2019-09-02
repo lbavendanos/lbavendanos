@@ -30,7 +30,7 @@ body {
     justify-content: center;
     align-items: center;
     @include print() {
-      height: 300px;
+      height: 450px;
     }
     &__avatar {
       width: 45%;
@@ -70,7 +70,7 @@ body {
           font-size: 2.7em;
         }
         @include print() {
-          font-size: 1em;
+          font-size: 2rem;
           margin: 0;
         }
       }
@@ -86,7 +86,7 @@ body {
           font-size: 1.3em;
         }
         @include print() {
-          font-size: 0.8em;
+          font-size: 1rem;
           margin: 0;
         }
       }
@@ -95,11 +95,11 @@ body {
 }
 
 .main {
-  @include print() {
-    min-height: calc(100vh - 40px);
-  }
   .container {
     padding: 50px 0;
+    @include print() {
+      padding-bottom: 15.8rem;
+    }
     .wrapper {
       padding-left: 3em;
       padding-right: 3em;
@@ -312,15 +312,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include print() {
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
   }
   &__title {
-    font-size: 0.7em;
+    font-size: 0.8rem;
     margin: 0;
     color: $default_color;
     text-align: left;
     text-transform: uppercase;
     @include print() {
-      font-size: 0.1em;
+      font-size: 0.5rem;
     }
   }
   &__contact {
@@ -335,10 +339,10 @@ body {
       list-style: none;
       text-align: right;
       &__item {
-        padding: 0.1em;
-        font-size: 0.7em;
+        padding: 0.1rem;
+        font-size: 0.7rem;
         @include print() {
-          font-size: 0.2em;
+          font-size: 0.3rem;
         }
         @include social(20px);
       }
