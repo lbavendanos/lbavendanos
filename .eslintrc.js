@@ -1,13 +1,16 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    es6: true,
+    es2021: true,
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: ['eslint:recommended', 'prettier'],
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+    ecmaVersion: 12,
   },
-  rules: {},
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+  },
 }
