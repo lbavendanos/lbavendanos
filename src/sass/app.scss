@@ -33,32 +33,7 @@ body {
     align-items: center;
 
     @include print() {
-      height: 450px;
-    }
-
-    &__avatar {
-      width: 45%;
-
-      @include media-breakpoint-up(sm) {
-        width: 40%;
-      }
-
-      @include media-breakpoint-up(md) {
-        width: 35%;
-      }
-
-      @include media-breakpoint-up(lg) {
-        width: 25%;
-      }
-
-      @include print() {
-        width: 20%;
-      }
-
-      img {
-        width: 100%;
-        border-radius: 50%;
-      }
+      height: 342px;
     }
 
     &__info {
