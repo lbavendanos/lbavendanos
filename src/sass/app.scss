@@ -13,6 +13,7 @@ body {
   background-color: $first_color;
 
   @include print() {
+    background-color: $default_color;
     -webkit-print-color-adjust: exact;
   }
 }
