@@ -33,7 +33,7 @@ body {
     align-items: center;
 
     @include print() {
-      height: 358px;
+      height: 300px;
     }
 
     &__info {
